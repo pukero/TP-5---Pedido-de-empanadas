@@ -3,7 +3,7 @@ const Pedido = () =>
 {
     return (
         <>
-        <select value={empanadas.gusto}>
+        <select>
             <option value="Carne">Carne</option>
             <option value="JyQ">JyQ</option>
             <option value="Humita">Humita</option>
@@ -11,8 +11,8 @@ const Pedido = () =>
             <option value="Carne Picante">Carne picante</option>
             <option value="Verdura">Verdura</option>
         </select>
-        <label>{`Ingrese la cantidad de ${empanadas.gusto} que va a desear`}</label>
-        <input type="number" value={empanadas.cantidad} onChange={cambiosInput} name="cantidad" class="u-full-width"></input>
+        <label>{`Ingrese la cantidad de que va a desear`}</label>
+        <input type="number"  name="cantidad" class="u-full-width"></input>
         </>
     )
 }

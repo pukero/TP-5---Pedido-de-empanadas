@@ -1,26 +1,35 @@
 import { use, useState } from 'react'
 import Pedido from '../Pedido';
+import Listado from '../Listado';
+import './Form.css';
+
 
 const Form = () => 
 {
-    const [empanadas, setEmpanadas] = useState({
+    const [pedido, setPedido] = useState({
         sector: "",
         nombre: "",
-        pedido: [
-            {
-                gusto: "",
-                cantidad: 0
-            }
-        ]
+        gustos: [{}]
     });
     const handleSubmit=(e)=>
     {
         e.preventDefault()
     }
+
+    const agregarGusto = () => {
+        setPedido({
+            ...pedido,
+            gustos: [
+                ...pedido.gustos,
+                {}
+            ]
+        })
+    }
+ 
     return (
         <form onSubmit={handleSubmit}>
         <input type="text" placeholder='Ingrese su nombre'></input>
-        <select value={empanadas.sector}>
+        <select>
             <option value="Sistemas">Sistemas</option>
             <option value="Finanzas">Finanzas</option>
             <option value="Ventas">Ventas</option>
@@ -28,8 +37,9 @@ const Form = () =>
             <option value="Soporte">Soporte</option>
             <option value="Deposito">Deposito</option>
         </select>
-        <Pedido />
-        <button>Agregar Empanada</button>
+        { pedido.gustos.map(p => <Pedido />) }
+        <button onClick={agregarGusto}>Agregar Empanada</button>
+        <button type="submit" class="u-full-width button-primary">Finalizar Pedido</button>
         </form>
     )
 }
